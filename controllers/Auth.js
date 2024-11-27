@@ -46,11 +46,20 @@ const Login=async(req,res)=>{
           // console.log(user)
                const token = jwt.sign({userId:user._id},process.env.JWT_SECRET)
 
-                res.cookie('token',token,{
-                    httpOnly: true,
-                    secure: false,
-                    maxAge: 3600000,
-                })
+                // res.cookie('token',token,{
+                //     httpOnly: true,
+                //     secure: false,
+                //     maxAge: 3600000,
+                // })
+
+                res.cookie('token', token, {
+                    httpOnly: true, // Prevent access via JavaScript
+                    secure: true,   // Ensure cookies are sent only over HTTPS
+                    sameSite: 'None', // Required for cross-origin cookies
+                    maxAge: 24 * 60 * 60 * 1000, // Optional: cookie expiration (1 day)
+                });
+
+                
                 
     res.status(200).json({success:true, message:"Login successfully", user: {_id: user._id, name: user.name, email: user.email, role: user.role, status:"Active", permissions: user.permissions},token})
 

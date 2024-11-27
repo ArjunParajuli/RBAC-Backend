@@ -16,6 +16,7 @@ app.use(cors({
     origin: ['http://localhost:5173', 'https://glittering-faun-21c75c.netlify.app'], // Add both local and deployed URLs
     credentials: true, // Allow credentials (cookies, etc.)
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow all necessary HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow required headers
 }))
 
 app.options('*', cors({
@@ -26,12 +27,17 @@ app.options('*', cors({
 app.use(express.json())
 app.use(cookieparser())
 
+app.use((req, res, next) => {
+    console.log('Incoming Cookies:', req.cookies);
+    next();
+});
+
 app.use('/api/auth', AuthRoutes);
 app.use('/api/admin', AdminRoutes);
 app.use('/api/users', UserRoutes);
 
-app.get('/',(req,res)=>{
-    res.send('test')
+app.get('/',(req, res)=>{
+    res.send('Test')
 })
 
 app.listen(PORT,()=>{

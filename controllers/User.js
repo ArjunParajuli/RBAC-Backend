@@ -3,6 +3,7 @@ import UserModel from "../models/user.js";
 const getAllUsers = async(req, res) => {
     
     try{
+        console.log('Cookies set:', res.getHeaders()['set-cookie']);
         const user = req.user;
         let users;
         if(user.role === "admin")
