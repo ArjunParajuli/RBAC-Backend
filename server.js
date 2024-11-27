@@ -13,15 +13,15 @@ const app=express()
 
 DbCon()
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://glittering-faun-21c75c.netlify.app'], // Add both local and deployed URLs
     credentials: true, // Allow credentials (cookies, etc.)
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow all necessary HTTP methods
 }))
 
 app.options('*', cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'https://glittering-faun-21c75c.netlify.app'], // Add both local and deployed URLs
     credentials: true,
-}));
+}))
 
 app.use(express.json())
 app.use(cookieparser())
