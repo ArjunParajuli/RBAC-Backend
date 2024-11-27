@@ -1,3 +1,9 @@
+Explanation Video Link: https://drive.google.com/file/d/1Q61s0cT7uL91SpCKXb9xyXO0WMGYq_PM/view?usp=sharing
+
+Github repo frontend: https://github.com/ArjunParajuli/RBAC-Frontend
+Github repo Backend:  https://github.com/ArjunParajuli/RBAC-Backend
+
+
 Description:
 Developed and deployed a robust Role-Based Access Control (RBAC) system, including a fully functional backend on Render and a responsive frontend on Netlify. Implemented secure authentication and authorization using cookies and JWT.
 
